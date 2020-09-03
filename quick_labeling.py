@@ -35,10 +35,13 @@ for i in range(1, int(num_classes) + 1):
         os.mkdir(source_dir + "\\" + str(i))
 
 move_history = deque(maxlen=100)
-history_file = open(source_dir + "\\" + 'history.txt', 'a')
+history_txt = "history.txt"
+history_file = open(source_dir + "\\" + history_txt, 'a')
 
 files = (file for file in os.listdir(source_dir) if os.path.isfile(os.path.join(source_dir, file)))
 files = list(files)
+if history_txt in files:
+    files.remove(history_txt)
 
 i = 0
 while True:
